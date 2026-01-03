@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Amore Nachtclub - Exquisite Entertainment</title>
+    <meta name="description" content="Erleben Sie eine Nacht voller Eleganz und Verführung im Casa Amore Nachtclub. Exklusive Unterhaltung, Show & Party Girls und unsere spezielle After Midnight Bar.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* =================================================================== */
+        /* 1. VARIABLES & GLOBAL RESETS                                     */
+        /* =================================================================== */
+        :root {
+            --gold: #FF69B4; /* Pink */
+            --dark-gold: #d64a9a; 
+            --dark-bg: #050505;
+            --light-bg: #111111;
+            --text-light: #f0f0f0;
+            --text-medium: #a0a0a0;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Roboto', sans-serif;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { background-color: var(--dark-bg); color: var(--text-light); font-family: var(--font-body); overflow-x: hidden; position: relative; }
+
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            box-shadow: inset 0 0 150px 50px rgba(0, 0, 0, 0.6); z-index: 10; pointer-events: none;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--gold); font-weight: 700; }
+        p { line-height: 1.7; color: var(--text-medium); }
+        a { color: var(--gold); text-decoration: none; transition: color var(--transition-fast); }
+        a:hover { color: var(--dark-gold); }
+
+        #fireworks-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+        .keyvisual-hero { display: flex; flex-direction: column; height: 100vh; width: 100vw; background-color: var(--dark-bg); position: relative; overflow: hidden; justify-content: flex-start; }
+        .hero-top-content { padding: 3vh 2vw; text-align: center; position: relative; z-index: 3; margin-bottom: 12vh; }
+        .crown-gif { width: clamp(250px, 20vw, 380px); height: auto; margin-bottom: 2vh; }
+        .hero-title-group h1 {
+            font-size: clamp(2.5rem, 6vw, 5.5rem); letter-spacing: 0.05em;
+            background: linear-gradient(145deg, var(--gold), #ffc0cb); -webkit-background-clip: text; background-clip: text;
+            color: transparent; text-shadow: 0 0 20px rgba(0,0,0,0.5); margin: 0 auto; max-width: 90%;
+        }
+        .hero-title-group p { font-size: clamp(0.9rem, 1.8vw, 1.4rem); font-weight: 300; text-transform: uppercase; letter-spacing: 0.4em; margin-top: 1.5vh; color: rgba(255, 255, 255, 0.8); padding-left: 0.4em; }
+        .hero-image-container { flex-grow: 1; position: relative; width: 100%; z-index: 3; }
+        .woman-asset { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: bottom center; }
+
+        .content-section { padding: 120px 40px; position: relative; z-index: 5; overflow: hidden; }
+        .content-section.dark { background-color: var(--dark-bg); }
+        .content-section.light { background: linear-gradient(to bottom, var(--light-bg), var(--dark-bg)); }
+        .section-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: clamp(2.5rem, 6vw, 3.8rem); margin-bottom: 2rem; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .section-subtitle { font-size: clamp(1.2rem, 3vw, 1.5rem); font-family: var(--font-heading); font-style: italic; font-weight: 500; color: var(--text-medium); margin-top: -1.5rem; margin-bottom: 4rem; }
+        
+        .ornate-divider { display: flex; align-items: center; justify-content: center; margin: 2rem auto; }
+        .ornate-divider::before, .ornate-divider::after { content: ''; flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(255, 105, 180, 0.3)); }
+        .ornate-divider::after { background: linear-gradient(to left, transparent, rgba(255, 105, 180, 0.3)); }
+        .ornate-divider-icon { display: inline-block; width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); margin: 0 20px; }
+        
+        .info-container { max-width: 850px; width: 100%; margin: 0 auto; padding: 60px; border: 1px solid rgba(255, 105, 180, 0.3); border-radius: 8px; background: radial-gradient(circle, rgba(255, 105, 180, 0.05) 0%, rgba(0,0,0,0) 70%); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); text-align: center; }
+        .info-container h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--gold); margin-bottom: 1.5rem; }
+        .info-container .slogan { font-family: var(--font-heading); font-size: clamp(1.4rem, 3vw, 1.9rem); font-style: italic; color: var(--gold); line-height: 1.6; margin-bottom: 2rem; }
+        .info-container .details-text { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300; color: rgba(255, 105, 180, 0.9); letter-spacing: 2px; text-transform: uppercase; line-height: 2.2; }
+
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
+        .grid-item { background-color: transparent; border: 1px solid rgba(255, 105, 180, 0.3); border-radius: 8px; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; transition: transform var(--transition-fast), box-shadow var(--transition-fast); position: relative; overflow: hidden; }
+        .grid-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 105, 180, 0.3); }
+        .grid-item-icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--gold); }
+
+        .btn { display: inline-block; padding: 14px 35px; border: 2px solid var(--gold); border-radius: 50px; color: var(--gold); text-transform: uppercase; font-weight: bold; letter-spacing: 1.5px; transition: all var(--transition-fast); }
+        .btn:hover { background-color: var(--gold); color: var(--dark-bg); }
+
+        .gallery-category-title { font-size: clamp(1.8rem, 4vw, 2.2rem); font-family: var(--font-heading); color: #fff; text-align: left; margin-top: 50px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 105, 180, 0.2); padding-bottom: 15px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .gallery-item { aspect-ratio: 1 / 1; background-color: #222; background-size: cover; background-position: center; border: 2px solid rgba(255, 105, 180, 0.3); border-radius: 8px; position: relative; overflow: hidden; transition: all var(--transition-fast); cursor: pointer; }
+        .gallery-item:hover { transform: scale(1.05); border-color: var(--gold); }
+        
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox-image, .lightbox-video { max-width: 90vw; max-height: 90vh; border: 2px solid var(--gold); display: none; }
+        .lightbox-image.active, .lightbox-video.active { display: block; }
+
+        .site-footer { background-color: #030303; padding: 60px 40px; text-align: center; border-top: 1px solid #1a1a1a; }
+        #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--gold); color: #000; border: none; border-radius: 50%; cursor: pointer; z-index: 1000; opacity: 0; visibility: hidden; transition: all var(--transition-fast); display: flex; justify-content: center; align-items: center; }
+        #back-to-top.visible { opacity: 1; visibility: visible; }
+
+        .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } }
+    </style>
+</head>
+<body>
+
+    <canvas id="fireworks-canvas"></canvas>
+
+    <header class="keyvisual-hero">
+        <div class="hero-top-content">
+            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756937072/Ultrarealistic_3d_rendering_202509040004_af5qqi.gif" alt="Krone" class="crown-gif">
+            <div class="hero-title-group">
+                <h1>Casa Amore Nachtclub</h1>
+                <p>Welcome to Nightclub entertainment</p>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756984336/Design_ohne_Titel_40_kmzj1z.png" alt="Elegante Frau" class="woman-asset">
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section light">
+            <div class="section-container">
+                <h2 class="section-title animate-on-scroll">Impressionen</h2>
+                
+                <h3 class="gallery-category-title animate-on-scroll">Unsere Location:</h3>
+                <div class="gallery-grid animate-on-scroll">
+                    <div class="gallery-item" 
+                         style="--stagger-index: 1; background-image: url('https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw');"
+                         data-type="image"
+                         data-src="https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw">
+                        <div class="gallery-item-overlay">
+                             <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
+                <div class="gallery-grid animate-on-scroll">
+                    <div class="gallery-item is-video" style="--stagger-index: 1;"
+                         data-type="video"
+                         data-src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4">
+                        <video class="gallery-item-video-preview" src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4" autoplay loop muted playsinline></video>
+                    </div>
+                    <div class="gallery-item" style="--stagger-index: 2; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg"></div>
+                    <div class="gallery-item" style="--stagger-index: 3; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section light" id="info">
+            <div class="info-container animate-on-scroll">
+                <h2>Casa Amore Nachtclub</h2>
+                <p class="slogan">"In unseren Gläsern ist mehr für Sie drinnen!"</p>
+                <div class="details-text">
+                    <p>Around the clock - Show & Party Girls</p>
+                    <p>and special After Midnight Bar</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section dark">
+            <div class="section-container">
+                <div class="grid-container animate-on-scroll">
+                    <div class="grid-item" style="--stagger-index: 1;">
+                        <h3>Girls Gesucht</h3>
+                        <p>Wir suchen neue Mädels für unser Team.</p>
+                        <a href="https://wa.link/md8dbu" class="btn">Jetzt bewerben</a>
+                    </div>
+                    <div class="grid-item" style="--stagger-index: 2;">
+                        <h3>Gäste-Info</h3>
+                        <p>Kontaktieren Sie uns diskret.</p>
+                        <a href="tel:+4369019533945" class="btn">+43 690 19533945</a>
+                    </div>
+                    <div class="grid-item" style="--stagger-index: 3;">
+                        <h3>Anfahrt & Parken</h3>
+                        <p>Neudau 119, 8292 Neudau. Diskrete Parkplätze vorhanden.</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Neudau+119+8292+Neudau" class="btn" target="_blank">Route planen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2025 Casa Amore Nachtclub. Diskrete Unterhaltung auf höchstem Niveau.</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content" style="position:relative;">
+            <img src="" class="lightbox-image" alt="Galerie">
+            <video src="" class="lightbox-video" controls loop></video>
+            <button id="lightbox-close" style="position:absolute; top:-40px; right:0; background:none; border:none; color:white; font-size:2rem; cursor:pointer;">×</button>
+        </div>
+    </div>
+
+    <button id="back-to-top">↑</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- FIREWORKS ---
+            const canvas = document.getElementById('fireworks-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
+            function animate() {
+                ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+                particles.forEach((p,i) => {
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.life -= 0.01;
+                    ctx.fillStyle = `rgba(255,105,180,${p.life})`; ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill();
+                    if(p.life <= 0) particles.splice(i,1);
+                });
+                if(Math.random() < 0.05) {
+                    let x = Math.random()*canvas.width, y = Math.random()*canvas.height/2;
+                    for(let i=0; i<50; i++) particles.push({x, y, vx: Math.random()*4-2, vy: Math.random()*4-2, life: 1});
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            // --- SCROLL ANIMATION ---
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+            }, {threshold: 0.1});
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+            // --- LIGHTBOX ---
+            const lightbox = document.getElementById('lightbox');
+            const lbImg = lightbox.querySelector('.lightbox-image');
+            const lbVid = lightbox.querySelector('.lightbox-video');
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    lightbox.classList.add('active');
+                    if(item.dataset.type === 'image') { lbImg.src = item.dataset.src; lbImg.classList.add('active'); lbVid.classList.remove('active'); }
+                    else { lbVid.src = item.dataset.src; lbVid.classList.add('active'); lbImg.classList.remove('active'); lbVid.play(); }
+                });
+            });
+            document.getElementById('lightbox-close').onclick = () => { lightbox.classList.remove('active'); lbVid.pause(); };
+
+            // --- BACK TO TOP ---
+            const btt = document.getElementById('back-to-top');
+            window.onscroll = () => { if(window.scrollY > 300) btt.classList.add('visible'); else btt.classList.remove('visible'); };
+            btt.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+        });
+    </script>
+</body>
+</html>
