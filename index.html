@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -86,6 +85,23 @@
         .gallery-item { aspect-ratio: 1 / 1; background-color: #222; background-size: cover; background-position: center; border: 2px solid rgba(255, 105, 180, 0.3); border-radius: 8px; position: relative; overflow: hidden; transition: all var(--transition-fast); cursor: pointer; }
         .gallery-item:hover { transform: scale(1.05); border-color: var(--gold); }
         
+        /* Video spezifische Anpassungen */
+        .gallery-item.is-video { background-color: #000; }
+        .gallery-item.is-video::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--gold);
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+            z-index: 2;
+            transition: transform var(--transition-fast);
+        }
+        .gallery-item.is-video:hover::after { transform: translate(-50%, -50%) scale(1.2); }
+        .gallery-item-video-preview { width: 100%; height: 100%; object-fit: cover; }
+
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
         .lightbox.active { opacity: 1; visibility: visible; }
         .lightbox-image, .lightbox-video { max-width: 90vw; max-height: 90vh; border: 2px solid var(--gold); display: none; }
@@ -137,11 +153,18 @@
 
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
+                    <div class="gallery-item" 
+                         style="--stagger-index: 0; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg');" 
+                         data-type="image" 
+                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
+                    </div>
+
                     <div class="gallery-item is-video" style="--stagger-index: 1;"
                          data-type="video"
                          data-src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4">
                         <video class="gallery-item-video-preview" src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4" autoplay loop muted playsinline></video>
                     </div>
+
                     <div class="gallery-item" style="--stagger-index: 2; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg"></div>
                     <div class="gallery-item" style="--stagger-index: 3; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg"></div>
                 </div>
@@ -232,11 +255,24 @@
             document.querySelectorAll('.gallery-item').forEach(item => {
                 item.addEventListener('click', () => {
                     lightbox.classList.add('active');
-                    if(item.dataset.type === 'image') { lbImg.src = item.dataset.src; lbImg.classList.add('active'); lbVid.classList.remove('active'); }
-                    else { lbVid.src = item.dataset.src; lbVid.classList.add('active'); lbImg.classList.remove('active'); lbVid.play(); }
+                    if(item.dataset.type === 'image') { 
+                        lbImg.src = item.dataset.src; 
+                        lbImg.classList.add('active'); 
+                        lbVid.classList.remove('active'); 
+                    }
+                    else { 
+                        lbVid.src = item.dataset.src; 
+                        lbVid.classList.add('active'); 
+                        lbImg.classList.remove('active'); 
+                        lbVid.play(); 
+                    }
                 });
             });
-            document.getElementById('lightbox-close').onclick = () => { lightbox.classList.remove('active'); lbVid.pause(); };
+            document.getElementById('lightbox-close').onclick = () => { 
+                lightbox.classList.remove('active'); 
+                lbVid.pause(); 
+                lbVid.src = ""; // Stop video loading
+            };
 
             // --- BACK TO TOP ---
             const btt = document.getElementById('back-to-top');
