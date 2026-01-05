@@ -81,8 +81,13 @@
         .btn:hover { background-color: var(--gold); color: var(--dark-bg); }
 
         .gallery-category-title { font-size: clamp(1.8rem, 4vw, 2.2rem); font-family: var(--font-heading); color: #fff; text-align: left; margin-top: 50px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 105, 180, 0.2); padding-bottom: 15px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; align-items: start; }
         .gallery-item { aspect-ratio: 1 / 1; background-color: #222; background-size: cover; background-position: center; border: 2px solid rgba(255, 105, 180, 0.3); border-radius: 8px; position: relative; overflow: hidden; transition: all var(--transition-fast); cursor: pointer; }
+        
+        /* Modifikation für originales Seitenverhältnis */
+        .gallery-item.original-ratio { aspect-ratio: auto; background-size: contain; background-repeat: no-repeat; background-color: transparent; }
+        .gallery-item.original-ratio img { width: 100%; height: auto; display: block; border-radius: 6px; }
+
         .gallery-item:hover { transform: scale(1.05); border-color: var(--gold); }
         
         /* Video spezifische Anpassungen */
@@ -155,16 +160,19 @@
 
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
-                    <div class="gallery-item" 
-                         style="--stagger-index: 0; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg'); background-size: contain;" 
+                    
+                    <div class="gallery-item original-ratio" 
+                         style="--stagger-index: 0;" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
+                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg" alt="Show Girl">
                     </div>
 
-                    <div class="gallery-item" 
-                         style="--stagger-index: 1; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg'); background-size: contain;" 
+                    <div class="gallery-item original-ratio" 
+                         style="--stagger-index: 1;" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
+                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Show Girl">
                     </div>
 
                     <div class="gallery-item is-video" style="--stagger-index: 2;"
@@ -206,7 +214,7 @@
                     <div class="grid-item" style="--stagger-index: 3;">
                         <h3>Anfahrt & Parken</h3>
                         <p>Neudau 119, 8292 Neudau. Diskrete Parkplätze vorhanden.</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Neudau+119+8292+Neudau" class="btn" target="_blank">Route planen</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Neudau+119,+8292+Neudau" class="btn" target="_blank">Route planen</a>
                     </div>
                 </div>
             </div>
@@ -279,7 +287,7 @@
             document.getElementById('lightbox-close').onclick = () => { 
                 lightbox.classList.remove('active'); 
                 lbVid.pause(); 
-                lbVid.src = ""; // Stop video loading
+                lbVid.src = ""; 
             };
 
             // --- BACK TO TOP ---
