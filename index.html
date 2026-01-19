@@ -58,12 +58,6 @@
         .content-section.light { background: linear-gradient(to bottom, var(--light-bg), var(--dark-bg)); }
         .section-container { max-width: 1200px; margin: 0 auto; text-align: center; }
         .section-title { font-size: clamp(2.5rem, 6vw, 3.8rem); margin-bottom: 2rem; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
-        .section-subtitle { font-size: clamp(1.2rem, 3vw, 1.5rem); font-family: var(--font-heading); font-style: italic; font-weight: 500; color: var(--text-medium); margin-top: -1.5rem; margin-bottom: 4rem; }
-        
-        .ornate-divider { display: flex; align-items: center; justify-content: center; margin: 2rem auto; }
-        .ornate-divider::before, .ornate-divider::after { content: ''; flex-grow: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(255, 105, 180, 0.3)); }
-        .ornate-divider::after { background: linear-gradient(to left, transparent, rgba(255, 105, 180, 0.3)); }
-        .ornate-divider-icon { display: inline-block; width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); margin: 0 20px; }
         
         .info-container { max-width: 850px; width: 100%; margin: 0 auto; padding: 60px; border: 1px solid rgba(255, 105, 180, 0.3); border-radius: 8px; background: radial-gradient(circle, rgba(255, 105, 180, 0.05) 0%, rgba(0,0,0,0) 70%); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); text-align: center; }
         .info-container h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--gold); margin-bottom: 1.5rem; }
@@ -73,7 +67,6 @@
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
         .grid-item { background-color: transparent; border: 1px solid rgba(255, 105, 180, 0.3); border-radius: 8px; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; transition: transform var(--transition-fast), box-shadow var(--transition-fast); position: relative; overflow: hidden; }
         .grid-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 105, 180, 0.3); }
-        .grid-item-icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--gold); }
 
         .btn { display: inline-block; padding: 14px 35px; border: 2px solid var(--gold); border-radius: 50px; color: var(--gold); text-transform: uppercase; font-weight: bold; letter-spacing: 1.5px; transition: all var(--transition-fast); }
         .btn:hover { background-color: var(--gold); color: var(--dark-bg); }
@@ -94,16 +87,16 @@
             overflow: hidden; 
             transition: all var(--transition-fast); 
             cursor: pointer;
-            /* Sorgt für ein einheitliches Seitenverhältnis (Portrait-Look) */
+            /* Einheitliches Seitenverhältnis für alle Items */
             aspect-ratio: 3 / 4; 
         }
         .gallery-item img, .gallery-item-video-preview {
             width: 100%;
             height: 100%;
             display: block;
-            /* Füllt den Container aus, schneidet überstehendes unten ab */
+            /* Füllt den Rahmen und schneidet unten symmetrisch ab */
             object-fit: cover;
-            /* Fokussiert den oberen Teil des Bildes (Gesichter) */
+            /* Hält Köpfe/Gesichter oben im Sichtfeld */
             object-position: top center;
         }
         .gallery-item:hover { transform: scale(1.03); border-color: var(--gold); }
@@ -118,9 +111,7 @@
             color: var(--gold);
             text-shadow: 0 0 15px rgba(0,0,0,0.8);
             z-index: 2;
-            transition: transform var(--transition-fast);
         }
-        .gallery-item.is-video:hover::after { transform: translate(-50%, -50%) scale(1.2); }
 
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
         .lightbox.active { opacity: 1; visibility: visible; }
@@ -160,9 +151,7 @@
                 
                 <h3 class="gallery-category-title animate-on-scroll">Unsere Location:</h3>
                 <div class="gallery-grid animate-on-scroll">
-                    <div class="gallery-item" 
-                         data-type="image"
-                         data-src="https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw">
+                    <div class="gallery-item" data-type="image" data-src="https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw">
                         <img src="https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw" alt="Location">
                     </div>
                 </div>
@@ -170,36 +159,28 @@
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
                     
-                    <div class="gallery-item" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg">
+                    <div class="gallery-item" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg" alt="Lady">
                     </div>
 
-                    <div class="gallery-item" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
+                    <div class="gallery-item" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Lady">
                     </div>
 
-                    <div class="gallery-item" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
+                    <div class="gallery-item" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg" alt="Lady">
-                    </div>
-
-                    <div class="gallery-item is-video"
-                         data-type="video"
-                         data-src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4">
-                        <video class="gallery-item-video-preview" src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4" autoplay loop muted playsinline></video>
                     </div>
 
                     <div class="gallery-item" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg">
                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg" alt="Lady">
                     </div>
-                    
+
                     <div class="gallery-item" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg">
                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg" alt="Lady">
+                    </div>
+
+                    <div class="gallery-item is-video" data-type="video" data-src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4">
+                        <video class="gallery-item-video-preview" src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4" autoplay loop muted playsinline></video>
                     </div>
                 </div>
             </div>
@@ -276,13 +257,11 @@
             }
             animate();
 
-            // --- SCROLL ANIMATION ---
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
             }, {threshold: 0.1});
             document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-            // --- LIGHTBOX ---
             const lightbox = document.getElementById('lightbox');
             const lbImg = lightbox.querySelector('.lightbox-image');
             const lbVid = lightbox.querySelector('.lightbox-video');
@@ -293,8 +272,7 @@
                         lbImg.src = item.dataset.src; 
                         lbImg.classList.add('active'); 
                         lbVid.classList.remove('active'); 
-                    }
-                    else { 
+                    } else { 
                         lbVid.src = item.dataset.src; 
                         lbVid.classList.add('active'); 
                         lbImg.classList.remove('active'); 
@@ -304,11 +282,9 @@
             });
             document.getElementById('lightbox-close').onclick = () => { 
                 lightbox.classList.remove('active'); 
-                lbVid.pause(); 
-                lbVid.src = ""; 
+                lbVid.pause(); lbVid.src = ""; 
             };
 
-            // --- BACK TO TOP ---
             const btt = document.getElementById('back-to-top');
             window.onscroll = () => { if(window.scrollY > 300) btt.classList.add('visible'); else btt.classList.remove('visible'); };
             btt.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
