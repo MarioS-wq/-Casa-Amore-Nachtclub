@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casa Amore Nachtclub - Exquisite Entertainment</title>
     <meta name="description" content="Erleben Sie eine Nacht voller Eleganz und Verführung im Casa Amore Nachtclub. Exklusive Unterhaltung, Show & Party Girls und unsere spezielle After Midnight Bar.">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-
     <style>
         /* =================================================================== */
         /* 1. VARIABLES & GLOBAL RESETS                                     */
@@ -95,13 +93,18 @@
             position: relative; 
             overflow: hidden; 
             transition: all var(--transition-fast); 
-            cursor: pointer; 
+            cursor: pointer;
+            /* Sorgt für ein einheitliches Seitenverhältnis (Portrait-Look) */
+            aspect-ratio: 3 / 4; 
         }
-        .gallery-item img {
+        .gallery-item img, .gallery-item-video-preview {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
-            object-fit: contain;
+            /* Füllt den Container aus, schneidet überstehendes unten ab */
+            object-fit: cover;
+            /* Fokussiert den oberen Teil des Bildes (Gesichter) */
+            object-position: top center;
         }
         .gallery-item:hover { transform: scale(1.03); border-color: var(--gold); }
         
@@ -118,7 +121,6 @@
             transition: transform var(--transition-fast);
         }
         .gallery-item.is-video:hover::after { transform: translate(-50%, -50%) scale(1.2); }
-        .gallery-item-video-preview { width: 100%; height: auto; display: block; }
 
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all var(--transition-medium); }
         .lightbox.active { opacity: 1; visibility: visible; }
@@ -136,7 +138,6 @@
     </style>
 </head>
 <body>
-
     <canvas id="fireworks-canvas"></canvas>
 
     <header class="keyvisual-hero">
@@ -169,21 +170,18 @@
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
                     
-                    <!-- BILD 1 -->
                     <div class="gallery-item" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg" alt="Lady">
                     </div>
 
-                    <!-- BILD 2 (NEU AN DIESER STELLE) -->
                     <div class="gallery-item" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Lady">
                     </div>
 
-                    <!-- WEITERE BILDER -->
                     <div class="gallery-item" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
@@ -221,17 +219,17 @@
         <section class="content-section dark">
             <div class="section-container">
                 <div class="grid-container animate-on-scroll">
-                    <div class="grid-item" style="--stagger-index: 1;">
+                    <div class="grid-item">
                         <h3>Girls Gesucht</h3>
                         <p>Wir suchen neue Mädels für unser Team.</p>
                         <a href="https://wa.link/md8dbu" class="btn">Jetzt bewerben</a>
                     </div>
-                    <div class="grid-item" style="--stagger-index: 2;">
+                    <div class="grid-item">
                         <h3>Gäste-Info</h3>
                         <p>Kontaktieren Sie uns diskret.</p>
                         <a href="tel:+4369019533945" class="btn">+43 690 19533945</a>
                     </div>
-                    <div class="grid-item" style="--stagger-index: 3;">
+                    <div class="grid-item">
                         <h3>Anfahrt & Parken</h3>
                         <p>Neudau 119, 8292 Neudau. Diskrete Parkplätze vorhanden.</p>
                         <a href="https://www.google.com/maps/search/?api=1&query=Neudau+119+8292+Neudau" class="btn" target="_blank">Route planen</a>
