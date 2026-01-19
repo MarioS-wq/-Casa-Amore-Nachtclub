@@ -82,15 +82,13 @@
 
         .gallery-category-title { font-size: clamp(1.8rem, 4vw, 2.2rem); font-family: var(--font-heading); color: #fff; text-align: left; margin-top: 50px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 105, 180, 0.2); padding-bottom: 15px; }
         
-        /* UPDATE: Grid für originales Seitenverhältnis */
         .gallery-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 25px; 
-            align-items: start; /* Verhindert das Strecken der Boxen */
+            align-items: start;
         }
         .gallery-item { 
-            /* aspect-ratio entfernt für Originalverhältnis */
             background-color: #111; 
             border: 2px solid rgba(255, 105, 180, 0.3); 
             border-radius: 8px; 
@@ -171,20 +169,21 @@
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
                     
-                    <!-- NEU HINZUGEFÜGTE FRAU -->
-                    <div class="gallery-item" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
-                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Lady">
-                    </div>
-
-                    <!-- BESTEHENDE FRAUEN -->
+                    <!-- BILD 1 -->
                     <div class="gallery-item" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg">
                          <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg" alt="Lady">
                     </div>
 
+                    <!-- BILD 2 (NEU AN DIESER STELLE) -->
+                    <div class="gallery-item" 
+                         data-type="image" 
+                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
+                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Lady">
+                    </div>
+
+                    <!-- WEITERE BILDER -->
                     <div class="gallery-item" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
