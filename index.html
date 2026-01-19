@@ -81,13 +81,8 @@
         .btn:hover { background-color: var(--gold); color: var(--dark-bg); }
 
         .gallery-category-title { font-size: clamp(1.8rem, 4vw, 2.2rem); font-family: var(--font-heading); color: #fff; text-align: left; margin-top: 50px; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 105, 180, 0.2); padding-bottom: 15px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; align-items: start; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .gallery-item { aspect-ratio: 1 / 1; background-color: #222; background-size: cover; background-position: center; border: 2px solid rgba(255, 105, 180, 0.3); border-radius: 8px; position: relative; overflow: hidden; transition: all var(--transition-fast); cursor: pointer; }
-        
-        /* Modifikation für originales Seitenverhältnis */
-        .gallery-item.original-ratio { aspect-ratio: auto; background-size: contain; background-repeat: no-repeat; background-color: transparent; }
-        .gallery-item.original-ratio img { width: 100%; height: auto; display: block; border-radius: 6px; }
-
         .gallery-item:hover { transform: scale(1.05); border-color: var(--gold); }
         
         /* Video spezifische Anpassungen */
@@ -147,46 +142,31 @@
                 <h3 class="gallery-category-title animate-on-scroll">Unsere Location:</h3>
                 <div class="gallery-grid animate-on-scroll">
                     <div class="gallery-item" 
-                         style="--stagger-index: 0; background-image: url('https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw');"
+                         style="--stagger-index: 1; background-image: url('https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw');"
                          data-type="image"
                          data-src="https://lh3.googleusercontent.com/p/AF1QipOY6L56U-gFzUC-sqdeESPZwZm0NRQm56_LL1Av=s1360-w1360-h1020-rw">
-                    </div>
-                    <div class="gallery-item" 
-                         style="--stagger-index: 1; background-image: url('https://lh3.googleusercontent.com/p/AF1QipMENjlpqXoHaK-qTyuUFg-RMOVKs0CSh-kkDhEf=s1360-w1360-h1020-rw');"
-                         data-type="image"
-                         data-src="https://lh3.googleusercontent.com/p/AF1QipMENjlpqXoHaK-qTyuUFg-RMOVKs0CSh-kkDhEf=s1360-w1360-h1020-rw">
+                        <div class="gallery-item-overlay">
+                             <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        </div>
                     </div>
                 </div>
 
                 <h3 class="gallery-category-title animate-on-scroll">Mädels:</h3>
                 <div class="gallery-grid animate-on-scroll">
-                    
-                    <div class="gallery-item original-ratio" 
-                         style="--stagger-index: 0;" 
+                    <div class="gallery-item" 
+                         style="--stagger-index: 0; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg');" 
                          data-type="image" 
                          data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg">
-                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627987/WhatsApp_Image_2026-01-03_at_18.17.14_crwxto.jpg" alt="Show Girl">
                     </div>
 
-                    <div class="gallery-item original-ratio" 
-                         style="--stagger-index: 1;" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg">
-                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1767627979/WhatsApp_Image_2026-01-03_at_18.24.05_iedrm9.jpg" alt="Show Girl">
-                    </div>
-
-                    <div class="gallery-item is-video" style="--stagger-index: 2;"
+                    <div class="gallery-item is-video" style="--stagger-index: 1;"
                          data-type="video"
                          data-src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4">
                         <video class="gallery-item-video-preview" src="https://res.cloudinary.com/dbhmigaes/video/upload/v1756632560/WhatsApp_Video_2025-08-30_at_15.06.28_ivq0ai.mp4" autoplay loop muted playsinline></video>
                     </div>
 
-                    <div class="gallery-item original-ratio" 
-                         style="--stagger-index: 3;" 
-                         data-type="image" 
-                         data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg">
-                         <img src="https://res.cloudinary.com/dbhmigaes/image/upload/v1768836333/WhatsApp_Image_2026-01-19_at_16.20.40_leng1g.jpg" alt="Show Girl Neu">
-                    </div>
+                    <div class="gallery-item" style="--stagger-index: 2; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756632559/WhatsApp_Image_2025-08-30_at_15.05.03_vccguu.jpg"></div>
+                    <div class="gallery-item" style="--stagger-index: 3; background-image: url('https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg');" data-type="image" data-src="https://res.cloudinary.com/dbhmigaes/image/upload/v1756753218/WhatsApp_Image_2025-09-01_at_14.02.08_zhzxup.jpg"></div>
                 </div>
             </div>
         </section>
@@ -218,7 +198,7 @@
                     <div class="grid-item" style="--stagger-index: 3;">
                         <h3>Anfahrt & Parken</h3>
                         <p>Neudau 119, 8292 Neudau. Diskrete Parkplätze vorhanden.</p>
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Neudau+119,+8292+Neudau" class="btn" target="_blank">Route planen</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Neudau+119+8292+Neudau" class="btn" target="_blank">Route planen</a>
                     </div>
                 </div>
             </div>
@@ -291,7 +271,7 @@
             document.getElementById('lightbox-close').onclick = () => { 
                 lightbox.classList.remove('active'); 
                 lbVid.pause(); 
-                lbVid.src = ""; 
+                lbVid.src = ""; // Stop video loading
             };
 
             // --- BACK TO TOP ---
